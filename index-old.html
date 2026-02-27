@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Eddie Li — Life & Investment Advisor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{--ga:#4F8EF7;--gb:#9B6EF8;--grad:linear-gradient(135deg,#4F8EF7,#9B6EF8);}
+[data-theme="dark"]{--bg:#07091A;--sur:#0D1024;--sur2:#111428;--bdr:rgba(255,255,255,.07);--bdr-h:rgba(79,142,247,.5);--tx:#E8EAF0;--tx2:rgba(232,234,240,.5);--tx3:rgba(232,234,240,.25);--nav:rgba(7,9,26,.82);--inp:rgba(255,255,255,.04);--inpb:rgba(255,255,255,.1);--logobg:#fff;--sdiv:rgba(255,255,255,.08);--footer:#050712;--tbg:rgba(255,255,255,.08);}
+[data-theme="light"]{--bg:#F4F6FF;--sur:#fff;--sur2:#EEF1FC;--bdr:rgba(0,0,0,.07);--bdr-h:rgba(79,142,247,.55);--tx:#0F1530;--tx2:rgba(15,21,48,.55);--tx3:rgba(15,21,48,.32);--nav:rgba(244,246,255,.88);--inp:rgba(0,0,0,.03);--inpb:rgba(0,0,0,.1);--logobg:#fff;--sdiv:rgba(0,0,0,.08);--footer:#0F1530;--tbg:rgba(0,0,0,.06);}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;overflow-x:hidden;transition:background .3s,color .3s;}
+.tg{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.gblob{position:absolute;border-radius:50%;pointer-events:none;}
+.gblue{background:radial-gradient(circle,rgba(79,142,247,.18) 0%,transparent 70%);}
+.gpurp{background:radial-gradient(circle,rgba(155,110,248,.14) 0%,transparent 70%);}
+[data-theme="light"] .gblue{background:radial-gradient(circle,rgba(79,142,247,.09) 0%,transparent 70%);}
+[data-theme="light"] .gpurp{background:radial-gradient(circle,rgba(155,110,248,.07) 0%,transparent 70%);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr);transition:background .3s;}
+.ni{max-width:1200px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.li{width:34px;height:34px;border-radius:9px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.82rem;color:#fff;}
+.lt{font-weight:800;font-size:1.05rem;color:var(--tx);}
+.nl{display:flex;gap:30px;}
+.nl a{font-size:.875rem;font-weight:500;color:var(--tx2);text-decoration:none;transition:color .2s;}
+.nl a:hover{color:var(--tx);}
+.nr{display:flex;align-items:center;gap:8px;}
+.tbtn{width:38px;height:38px;border-radius:10px;background:var(--tbg);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:transform .15s;}
+.tbtn:hover{transform:scale(1.08);}
+.lbtn{font-size:.82rem;font-weight:700;padding:9px 18px;border-radius:10px;background:linear-gradient(135deg,rgba(79,142,247,.25) 0%,rgba(155,110,248,.25) 100%);border:1px solid rgba(79,142,247,.45);color:#fff;cursor:pointer;transition:all .2s;}
+.lbtn:hover{background:linear-gradient(135deg,#4F8EF7 0%,#9B6EF8 100%);border-color:transparent;color:#fff;}
+.ncta{background:var(--grad);color:#fff;font-weight:700;font-size:.875rem;padding:10px 20px;border-radius:10px;text-decoration:none;transition:opacity .2s;white-space:nowrap;}
+.ncta:hover{opacity:.87;}
+
+/* SECTIONS */
+section{padding:92px 32px;position:relative;overflow:hidden;}
+.si{max-width:1200px;margin:0 auto;}
+.stag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.22);color:var(--ga);padding:5px 14px;border-radius:999px;margin-bottom:14px;}
+h2{font-size:clamp(2rem,3vw,2.8rem);font-weight:900;line-height:1.12;letter-spacing:-1px;color:var(--tx);margin-bottom:10px;}
+.ssub{color:var(--tx2);font-size:.95rem;line-height:1.65;max-width:520px;margin-bottom:48px;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 32px 80px;}
+.hi{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.28);border-radius:999px;padding:6px 16px;font-size:.75rem;font-weight:600;color:var(--ga);margin-bottom:20px;}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ga);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1{font-size:clamp(2.5rem,4.2vw,3.7rem);font-weight:900;line-height:1.1;letter-spacing:-1.5px;color:var(--tx);margin-bottom:18px;}
+.hsub{font-size:1rem;color:var(--tx2);line-height:1.72;max-width:500px;margin-bottom:32px;}
+.br{display:flex;gap:12px;flex-wrap:wrap;}
+.bp{display:inline-block;background:var(--grad);color:#fff;font-weight:700;font-size:.9rem;padding:14px 28px;border-radius:12px;text-decoration:none;transition:opacity .2s;}
+.bp:hover{opacity:.87;}
+.bg{display:inline-block;background:var(--sur2);border:1px solid var(--bdr);color:var(--tx);font-weight:600;font-size:.9rem;padding:14px 28px;border-radius:12px;text-decoration:none;transition:border-color .2s;}
+.bg:hover{border-color:var(--bdr-h);}
+.hstats{display:flex;gap:28px;margin-top:40px;padding-top:28px;border-top:1px solid var(--sdiv);}
+.sn{font-size:1.6rem;font-weight:900;color:var(--tx);}
+.sl{font-size:.7rem;color:var(--tx3);margin-top:2px;}
+.sdv{width:1px;background:var(--sdiv);}
+.hcard{background:var(--sur);border-radius:24px;padding:32px;border:1px solid var(--bdr);position:relative;overflow:hidden;width:310px;}
+.av{width:76px;height:76px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.4rem;color:#fff;margin:0 auto 14px;box-shadow:0 0 0 5px rgba(79,142,247,.18);}
+.pr{display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:10px;padding:10px 14px;border:1px solid var(--bdr);margin-bottom:9px;}
+.pr span{font-size:.8rem;color:var(--tx2);}
+.chk{color:var(--ga);font-size:.9rem;}
+
+/* CARRIERS */
+.ticker-wrap{overflow:hidden;position:relative;padding:4px 0;}
+.ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;width:100px;height:100%;z-index:2;}
+.ticker-wrap::before{left:0;background:linear-gradient(to right,var(--bg),transparent);}
+.ticker-wrap::after{right:0;background:linear-gradient(to left,var(--bg),transparent);}
+.trow{display:flex;width:max-content;animation:scroll 30s linear infinite;gap:14px;}
+.trow:hover{animation-play-state:paused;}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.chip{display:flex;align-items:center;background:var(--sur);border:1px solid var(--bdr);border-radius:12px;padding:10px 18px;white-space:nowrap;transition:border-color .2s;}
+.chip:hover{border-color:var(--bdr-h);}
+.chip .lw{height:32px;min-width:90px;background:var(--logobg);border-radius:7px;padding:4px 8px;display:flex;align-items:center;justify-content:center;}
+.chip .lw img{max-height:24px;max-width:80px;object-fit:contain;}
+.cgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:28px;}
+.cc{background:var(--sur);border:1px solid var(--bdr);border-radius:14px;padding:16px 10px;text-align:center;cursor:pointer;transition:border-color .22s,transform .22s;}
+.cc:hover{border-color:var(--bdr-h);transform:translateY(-3px);}
+.clw{height:42px;background:var(--logobg);border-radius:9px;padding:5px 8px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+.clw img{max-height:30px;max-width:100%;object-fit:contain;}
+.cn{font-weight:600;font-size:.68rem;color:var(--tx2);}
+.cdet{display:none;margin-top:10px;border-top:1px solid var(--bdr);padding-top:8px;text-align:left;}
+.cdet.open{display:block;}
+.cdet p{font-size:.65rem;color:var(--tx3);line-height:1.65;}
+.ctag{font-size:.65rem;color:var(--ga);font-weight:700;display:block;margin-bottom:3px;}
+
+/* PRODUCTS */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.pc{background:var(--sur);border:1px solid var(--bdr);border-radius:18px;padding:26px;transition:border-color .22s,transform .22s;}
+.pc:hover{border-color:var(--bdr-h);transform:translateY(-4px);}
+.pi{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;}
+.pc h3{font-size:.95rem;font-weight:700;color:var(--tx);margin-bottom:7px;}
+.pc p{font-size:.8rem;color:var(--tx2);line-height:1.65;margin-bottom:14px;}
+.tags{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{font-size:.65rem;font-weight:600;padding:3px 9px;border-radius:999px;}
+
+/* ABOUT */
+.absec{background:var(--sur2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);}
+.abgrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.abcards{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.gbc{background:var(--sur);border-radius:14px;padding:20px;border:1px solid var(--bdr);position:relative;}
+.gbc::before{content:'';position:absolute;inset:0;border-radius:14px;padding:1px;background:linear-gradient(135deg,rgba(79,142,247,.4),rgba(155,110,248,.25));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;}
+
+/* CONTACT */
+.ctsec{background:var(--sur2);border-top:1px solid var(--bdr);}
+.ctgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+
+/* QR CARDS */
+.qr-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
+.qr-card{background:var(--sur);border:1px solid var(--bdr);border-radius:20px;padding:24px;display:flex;flex-direction:column;align-items:center;text-align:center;transition:border-color .2s,transform .2s;}
+.qr-card:hover{border-color:var(--bdr-h);transform:translateY(-3px);}
+.qr-icon-wrap{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:14px;}
+.qr-img-wrap{background:#fff;border-radius:14px;padding:10px;margin-bottom:14px;box-shadow:0 4px 20px rgba(0,0,0,.12);}
+.qr-img-wrap img{width:150px;height:150px;display:block;}
+.qr-card .qname{font-weight:700;font-size:.95rem;color:var(--tx);margin-bottom:4px;}
+.qr-card .qsub{font-size:.75rem;color:var(--tx3);}
+.qr-card .qid{font-size:.8rem;font-weight:600;margin-top:8px;padding:6px 12px;border-radius:8px;}
+
+/* Other contact rows */
+.cmethods{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.crow{display:flex;align-items:center;gap:14px;background:var(--sur);border:1px solid var(--bdr);border-radius:14px;padding:14px 18px;text-decoration:none;transition:border-color .2s;}
+.crow:hover{border-color:var(--bdr-h);}
+.cicon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.ctit{font-weight:600;font-size:.875rem;color:var(--tx);}
+.csub{font-size:.72rem;color:var(--tx3);}
+.carr{margin-left:auto;color:var(--tx3);transition:transform .2s;}
+.crow:hover .carr{transform:translateX(3px);color:var(--tx);}
+
+/* FORM */
+.fcard{background:var(--sur);border:1px solid var(--bdr);border-radius:22px;padding:32px;}
+.fcard h3{font-size:1.2rem;font-weight:800;color:var(--tx);margin-bottom:5px;}
+.fsub{font-size:.8rem;color:var(--tx2);margin-bottom:24px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.fg{margin-bottom:12px;}
+label{display:block;font-size:.68rem;font-weight:700;color:var(--tx3);margin-bottom:5px;letter-spacing:.05em;text-transform:uppercase;}
+input,select,textarea{width:100%;background:var(--inp);border:1px solid var(--inpb);border-radius:10px;padding:11px 13px;font-size:.875rem;color:var(--tx);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s;}
+input::placeholder,textarea::placeholder{color:var(--tx3);}
+select option{background:var(--sur);color:var(--tx);}
+input:focus,select:focus,textarea:focus{border-color:rgba(79,142,247,.6);box-shadow:0 0 0 3px rgba(79,142,247,.1);}
+.rrow{display:flex;flex-wrap:wrap;gap:10px;}
+.ropt{display:flex;align-items:center;gap:5px;font-size:.8rem;color:var(--tx2);cursor:pointer;}
+.ropt input{width:auto;}
+textarea{resize:none;}
+.fsub2{width:100%;padding:13px;background:var(--grad);color:#fff;font-weight:700;font-size:.875rem;border:none;border-radius:11px;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity .2s;}
+.fsub2:hover{opacity:.87;}
+.fnote{text-align:center;font-size:.68rem;color:var(--tx3);margin-top:8px;}
+.succ{display:none;text-align:center;padding:40px 0;}
+.succ .si2{font-size:3rem;margin-bottom:10px;}
+.succ h4{font-size:1.1rem;font-weight:800;color:var(--tx);margin-bottom:5px;}
+.succ p{font-size:.82rem;color:var(--tx2);}
+
+/* FOOTER */
+footer{background:var(--footer);border-top:1px solid rgba(255,255,255,.06);padding:52px 32px;}
+.fi{max-width:1200px;margin:0 auto;}
+.fgrid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.06);}
+.fcol h5{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;}
+.fcol a{display:block;font-size:.8rem;color:rgba(255,255,255,.25);text-decoration:none;margin-bottom:9px;transition:color .2s;}
+.fcol a:hover{color:rgba(255,255,255,.7);}
+.fbrand{font-size:.8rem;color:rgba(255,255,255,.25);line-height:1.65;margin-top:10px;max-width:210px;}
+.fbot{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:24px;}
+.fbot p{font-size:.7rem;color:rgba(255,255,255,.18);}
+
+/* INFO BOX */
+.ibox{background:var(--sur);border:1px solid var(--bdr);border-radius:13px;padding:16px 18px;margin-top:16px;}
+.ibt{font-weight:700;color:var(--tx);font-size:.8rem;margin-bottom:5px;}
+.ibb{font-size:.74rem;color:var(--tx3);line-height:1.75;}
+
+/* RESPONSIVE */
+@media(max-width:1050px){.cgrid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:900px){.hi,.abgrid,.ctgrid{grid-template-columns:1fr;}.pgrid{grid-template-columns:1fr 1fr;}.cgrid{grid-template-columns:repeat(3,1fr);}.fgrid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){section{padding:60px 20px;}.pgrid{grid-template-columns:1fr;}.cgrid{grid-template-columns:repeat(2,1fr);}.nl{display:none;}.qr-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav>
+  <div class="ni">
+    <a href="#" class="logo"><div class="li" style="font-size:.7rem;letter-spacing:.5px;padding:0 6px;width:auto;min-width:44px;">IWE</div></a>
+    <div class="nl">
+      <a href="#partners" data-en="Partners" data-yue="合作夥伴">Partners</a>
+      <a href="#products" data-en="Products" data-yue="產品">Products</a>
+      <a href="#about"    data-en="About"    data-yue="關於我">About</a>
+      <a href="#contact"  data-en="Contact"  data-yue="聯絡我">Contact</a>
+    </div>
+    <div class="nr">
+      <button class="tbtn" onclick="toggleTheme()" id="tbtn" title="Toggle theme">🌙</button>
+      <button class="lbtn" onclick="toggleLang()"  id="lbtn">廣東話</button>
+      <a href="#contact" class="ncta" data-en="Book Free Call →" data-yue="免費預約 →">Book Free Call →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="gblob gblue" style="width:700px;height:700px;top:-200px;left:-200px;"></div>
+  <div class="gblob gpurp" style="width:600px;height:600px;top:0;right:-150px;"></div>
+  <div class="hi">
+    <div>
+      <div class="badge"><span class="dot"></span><span data-en="Accepting New Clients Across Ontario 🇨🇦" data-yue="現接受安大略省新客戶 🇨🇦">Accepting New Clients Across Ontario 🇨🇦</span></div>
+      <h1 data-en="Protect Your Family.<br/>Grow Your Wealth.<br/><span class='tg'>The Smart Way.</span>" data-yue="保障您的家人。<br/>增長您的財富。<br/><span class='tg'>明智之選。</span>">Protect Your Family.<br/>Grow Your Wealth.<br/><span class="tg">The Smart Way.</span></h1>
+      <p class="hsub" data-en="Hi, I'm Eddie Li — an independent life insurance and investment advisor contracted with Canada's top carriers. Unbiased advice, zero pressure, real results. I also help clients review and service their existing policies — and can take over as your agent of record at no cost." data-yue="你好，我係李先生 — 一位獨立人壽保險及投資顧問，與加拿大頂級保險公司合作。提供公正建議，無任何壓力，帶來真實成果。我亦協助客戶檢視及管理現有保單——並可免費成為您的服務代理人。">Hi, I'm Eddie Li — an independent life insurance and investment advisor contracted with Canada's top carriers. Unbiased advice, zero pressure, real results. I also help clients review and service their existing policies — and can take over as your agent of record at no cost.</p>
+      <div class="br">
+        <a href="#contact" class="bp" data-en="Get a Free Consultation →" data-yue="免費諮詢 →">Get a Free Consultation →</a>
+        <a href="#products" class="bg" data-en="View Products" data-yue="查看產品">View Products</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CARRIERS ═══ -->
+<section id="partners" style="padding-top:60px;padding-bottom:60px;">
+  <div class="gblob gblue" style="width:500px;height:500px;bottom:-100px;right:-80px;opacity:.6;"></div>
+  <div class="si">
+    <div style="text-align:center;margin-bottom:36px;">
+      <div class="stag" data-en="Contracted With" data-yue="合作保險公司">Contracted With</div>
+      <h2>Canada's Top <span class="tg" data-en="Insurance Carriers" data-yue="保險公司">Insurance Carriers</span></h2>
+      <p class="ssub" style="margin:0 auto;" data-en="I compare across all these carriers to find what's best for your situation — not what's best for me." data-yue="我比較所有合作保險公司，為您找出最適合的方案——而非對我最有利的。">I compare across all these carriers to find what's best for your situation — not what's best for me.</p>
+    </div>
+
+    <!-- Scrolling ticker -->
+    <div class="ticker-wrap" style="margin-bottom:32px;">
+      <div class="trow">
+        <div class="chip"><div class="lw"><img src="logos/sunlife.png" alt="Sun Life"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/ia.png" alt="iA Financial"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/canadalife.png" alt="Canada Life"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/equitable.png" alt="Equitable Life"/></div></div>
+        <div class="chip"><div class="lw" style="padding:4px 6px;"><img src="logos/beneva.svg" alt="Beneva"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/manulife.png" alt="Manulife"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/bmo.png" alt="BMO Insurance"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/ivari.svg" alt="ivari"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/tugo.png" alt="TuGO"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/sunlife.png" alt="Sun Life"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/ia.png" alt="iA Financial"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/canadalife.png" alt="Canada Life"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/equitable.png" alt="Equitable Life"/></div></div>
+        <div class="chip"><div class="lw" style="padding:4px 6px;"><img src="logos/beneva.svg" alt="Beneva"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/manulife.png" alt="Manulife"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/bmo.png" alt="BMO Insurance"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/ivari.svg" alt="ivari"/></div></div>
+        <div class="chip"><div class="lw"><img src="logos/tugo.png" alt="TuGO"/></div></div>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="cgrid">
+      <div class="cc" onclick="toggleC('sl')"><div class="clw"><img src="logos/sunlife.png" alt="Sun Life"/></div><div class="cn">Sun Life</div><div id="sl" class="cdet"><span class="ctag" data-en="Best for:" data-yue="最適合：">Best for:</span><p data-en="✦ Critical illness&#10;✦ Universal life&#10;✦ Disability plans" data-yue="✦ 危疾保險&#10;✦ 萬用壽險&#10;✦ 傷殘保障">✦ Critical illness<br/>✦ Universal life<br/>✦ Disability plans</p></div></div>
+      <div class="cc" onclick="toggleC('ia')"><div class="clw"><img src="logos/ia.png" alt="iA"/></div><div class="cn">iA Financial</div><div id="ia" class="cdet"><span class="ctag" data-en="Best for:" data-yue="最適合：">Best for:</span><p data-en="✦ Term life rates&#10;✦ RRSP / TFSA seg funds&#10;✦ RESP plans" data-yue="✦ 定期壽險費率&#10;✦ RRSP / TFSA分隔基金&#10;✦ RESP教育儲蓄">✦ Term life rates<br/>✦ RRSP / TFSA seg funds<br/>✦ RESP plans</p></div></div>
+      <div class="cc" onclick="toggleC('cl')"><div class="clw"><img src="logos/canadalife.png" alt="Canada Life"/></div><div class="cn">Canada Life</div><div id="cl" class="cdet"><span class="ctag" data-en="Best for:" data-yue="最適合：">Best for:</span><p data-en="✦ Participating whole life&#10;✦ Disability insurance&#10;✦ Investment platform" data-yue="✦ 分紅終身壽險&#10;✦ 傷殘保險&#10;✦ 投資平台">✦ Participating whole life<br/>✦ Disability insurance<br/>✦ Investment platform</p></div></div>
+      <div class="cc" onclick="toggleC('eq')"><div class="clw"><img src="logos/equitable.png" alt="Equitable"/></div><div class="cn">Equitable</div><div id="eq" class="cdet"><span class="ctag" data-en="Best for:" data-yue="最適合：">Best for:</span><p data-en="✦ Participating whole life&#10;✦ Fast underwriting&#10;✦ Competitive CI rates" data-yue="✦ 分紅終身壽險&#10;✦ 快速核保&#10;✦ 具競爭力危疾費率">✦ Participating whole life<br/>✦ Fast underwriting<br/>✦ Competitive CI rates</p></div></div>
+      <div class="cc" onclick="toggleC('bn')"><div class="clw" style="padding:4px 6px;"><img src="logos/beneva.svg" alt="Beneva"/></div><div class="cn">Beneva</div><div id="bn" class="cdet"><span class="ctag" data-en="Best for:" data-yue="最適合：">Best for:</span><p data-en="✦ Group insurance&#10;✦ Travel insurance&#10;✦ Group health &amp; dental" data-yue="✦ 團體保險&#10;✦ 旅遊保險&#10;✦ 團體醫療牙科">✦ Group insurance<br/>✦ Travel insurance<br/>✦ Group health &amp; dental</p></div></div>
+      <div class="cc" onclick="toggleC('ml')"><div class="clw"><img src="logos/manulife.png" alt="Manulife"/></div><div class="cn">Manulife</div><div id="ml" class="cdet"><span class="ctag" data-en="Best for:" data-yue="最適合：">Best for:</span><p data-en="✦ Seg funds platform&#10;✦ Universal life&#10;✦ Digital-first tools" data-yue="✦ 分隔基金平台&#10;✦ 萬用壽險&#10;✦ 數碼化工具">✦ Seg funds platform<br/>✦ Universal life<br/>✦ Digital-first tools</p></div></div>
+      <div class="cc" onclick="toggleC('bm')"><div class="clw"><img src="logos/bmo.png" alt="BMO"/></div><div class="cn">BMO Insurance</div><div id="bm" class="cdet"><span class="ctag" data-en="Best for:" data-yue="最適合：">Best for:</span><p data-en="✦ Term life&#10;✦ Critical illness&#10;✦ Competitive pricing" data-yue="✦ 定期壽險&#10;✦ 危疾保險&#10;✦ 具競爭力價格">✦ Term life<br/>✦ Critical illness<br/>✦ Competitive pricing</p></div></div>
+      <div class="cc" onclick="toggleC('iv')"><div class="clw"><img src="logos/ivari.svg" alt="ivari"/></div><div class="cn">ivari</div><div id="iv" class="cdet"><span class="ctag" data-en="Best for:" data-yue="最適合：">Best for:</span><p data-en="✦ Term life&#10;✦ Universal life&#10;✦ Competitive CI rates" data-yue="✦ 定期壽險&#10;✦ 萬用壽險&#10;✦ 具競爭力危疾費率">✦ Term life<br/>✦ Universal life<br/>✦ Competitive CI rates</p></div></div>
+      <div class="cc" onclick="toggleC('tg')"><div class="clw"><img src="logos/tugo.png" alt="TuGO"/></div><div class="cn">TuGO Travel</div><div id="tg" class="cdet"><span class="ctag" data-en="Best for:" data-yue="最適合：">Best for:</span><p data-en="✦ Travel insurance&#10;✦ Visitors to Canada&#10;✦ Multi-trip annual plans" data-yue="✦ 旅遊保險&#10;✦ 訪客保障&#10;✦ 全年多次旅遊計劃">✦ Travel insurance<br/>✦ Visitors to Canada<br/>✦ Multi-trip annual plans</p></div></div>
+    </div>
+    <p style="text-align:center;font-size:.7rem;color:var(--tx3);margin-top:12px;" data-en="Tap any carrier to see how I use them ↑" data-yue="點擊任何保險公司了解詳情 ↑">Tap any carrier to see how I use them ↑</p>
+  </div>
+</section>
+
+<!-- ═══ PRODUCTS ═══ -->
+<section id="products">
+  <div class="gblob gpurp" style="width:600px;height:600px;top:-100px;left:-150px;opacity:.5;"></div>
+  <div class="si">
+    <div style="text-align:center;">
+      <div class="stag" data-en="What I Offer" data-yue="我的服務">What I Offer</div>
+      <h2>One Advisor. <span class="tg" data-en="Every Product You Need." data-yue="全面保險方案。">Every Product You Need.</span></h2>
+      <p class="ssub" style="margin:0 auto;" data-en="From protecting your family today to building wealth for tomorrow — full-spectrum solutions." data-yue="從今天保障您的家人到為未來累積財富——全方位保障方案。">From protecting your family today to building wealth for tomorrow — full-spectrum solutions.</p>
+    </div>
+    <div class="pgrid">
+
+      <div class="pc">
+        <div class="pi" style="background:rgba(79,142,247,.1);">🛡️</div>
+        <h3 data-en="Life Insurance" data-yue="人壽保險">Life Insurance</h3>
+        <p data-en="Term, whole life, universal life, and participating life — tailored to your age, income, and family goals." data-yue="定期、終身、萬用及分紅人壽保險——根據您的年齡、收入及家庭目標度身訂造。">Term, whole life, universal life, and participating life — tailored to your age, income, and family goals.</p>
+        <div class="tags">
+          <span class="tag" style="background:rgba(79,142,247,.1);color:#4F8EF7;" data-en="Term Life" data-yue="定期壽險">Term Life</span>
+          <span class="tag" style="background:rgba(79,142,247,.1);color:#4F8EF7;" data-en="Whole Life" data-yue="終身壽險">Whole Life</span>
+          <span class="tag" style="background:rgba(79,142,247,.1);color:#4F8EF7;" data-en="Universal Life" data-yue="萬用壽險">Universal Life</span>
+          <span class="tag" style="background:rgba(79,142,247,.1);color:#4F8EF7;" data-en="Participating" data-yue="分紅保單">Participating</span>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pi" style="background:rgba(239,68,68,.1);">❤️‍🩹</div>
+        <h3 data-en="Critical Illness &amp; Disability" data-yue="危疾及傷殘保險">Critical Illness &amp; Disability</h3>
+        <p data-en="Lump-sum payout on cancer, heart attack, or stroke. Income replacement if you can't work." data-yue="確診癌症、心臟病或中風後一筆過賠付。無法工作時替代收入保障。">Lump-sum payout on cancer, heart attack, or stroke. Income replacement if you can't work.</p>
+        <div class="tags">
+          <span class="tag" style="background:rgba(239,68,68,.1);color:#F87171;" data-en="Critical Illness" data-yue="危疾保險">Critical Illness</span>
+          <span class="tag" style="background:rgba(239,68,68,.1);color:#F87171;" data-en="Disability (DI)" data-yue="傷殘保障">Disability (DI)</span>
+          <span class="tag" style="background:rgba(239,68,68,.1);color:#F87171;" data-en="Return of Premium" data-yue="退還保費">Return of Premium</span>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pi" style="background:rgba(14,165,233,.1);">✈️</div>
+        <h3 data-en="Travel Insurance" data-yue="旅遊保險">Travel Insurance</h3>
+        <p data-en="Emergency medical, trip cancellation, visitors to Canada, and multi-trip annual plans." data-yue="緊急醫療、旅程取消、來加訪客及全年多次旅遊保障計劃。">Emergency medical, trip cancellation, visitors to Canada, and multi-trip annual plans.</p>
+        <div class="tags">
+          <span class="tag" style="background:rgba(14,165,233,.1);color:#38BDF8;" data-en="Emergency Medical" data-yue="緊急醫療">Emergency Medical</span>
+          <span class="tag" style="background:rgba(14,165,233,.1);color:#38BDF8;" data-en="Visitors to Canada" data-yue="訪客保障">Visitors to Canada</span>
+          <span class="tag" style="background:rgba(14,165,233,.1);color:#38BDF8;" data-en="Trip Cancel" data-yue="旅程取消">Trip Cancel</span>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pi" style="background:rgba(16,185,129,.1);">📈</div>
+        <h3 data-en="RRSP &amp; TFSA" data-yue="退休儲蓄及免稅儲蓄">RRSP &amp; TFSA</h3>
+        <p data-en="Grow retirement savings through tax-advantaged accounts backed by segregated funds, GIAs, and annuities." data-yue="透過分隔基金、保證投資年金等稅務優惠帳戶，增長退休儲蓄。">Grow retirement savings through tax-advantaged accounts backed by segregated funds, GIAs, and annuities.</p>
+        <div class="tags">
+          <span class="tag" style="background:rgba(16,185,129,.1);color:#34D399;">RRSP</span>
+          <span class="tag" style="background:rgba(16,185,129,.1);color:#34D399;">TFSA</span>
+          <span class="tag" style="background:rgba(16,185,129,.1);color:#34D399;" data-en="Segregated Funds" data-yue="分隔基金">Segregated Funds</span>
+          <span class="tag" style="background:rgba(16,185,129,.1);color:#34D399;">GIA</span>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pi" style="background:rgba(168,85,247,.1);">🎓</div>
+        <h3 data-en="RESP — Education Savings" data-yue="RESP — 教育儲蓄計劃">RESP — Education Savings</h3>
+        <p data-en="Save for your child's education and receive up to $7,200 in free CESG government grants over the plan lifetime." data-yue="為子女教育儲蓄，並可獲得政府最高$7,200免費助學金（CESG）。">Save for your child's education and receive up to $7,200 in free CESG government grants over the plan lifetime.</p>
+        <div class="tags">
+          <span class="tag" style="background:rgba(168,85,247,.1);color:#C084FC;" data-en="Family RESP" data-yue="家庭教育儲蓄">Family RESP</span>
+          <span class="tag" style="background:rgba(168,85,247,.1);color:#C084FC;" data-en="CESG Grants" data-yue="政府助學金">CESG Grants</span>
+          <span class="tag" style="background:rgba(168,85,247,.1);color:#C084FC;" data-en="Seg Funds" data-yue="分隔基金">Seg Funds</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="absec">
+  <div class="gblob gblue" style="width:400px;height:400px;bottom:-60px;right:-60px;opacity:.5;"></div>
+  <div class="si abgrid">
+    <div>
+      <div class="stag" data-en="About Eddie" data-yue="關於李先生">About Eddie</div>
+      <h2 data-en="Independent Advisor.<br/><span class='tg'>Working For You.</span>" data-yue="獨立顧問。<br/><span class='tg'>為您服務。</span>">Independent Advisor.<br/><span class="tg">Working For You.</span></h2>
+      <p style="font-size:.88rem;color:var(--tx2);line-height:1.75;margin-bottom:13px;" data-en="As a fully independent advisor, I work for you — not for any insurance company. There's no internal team to redirect you to, no quota to meet, and no pressure to favour one carrier over another. You deal with me directly, start to finish." data-yue="作為完全獨立的顧問，我為您服務——而非為任何保險公司。沒有內部團隊轉介，沒有銷售配額，也沒有偏袒任何保險公司的壓力。由始至終，您只需直接與我溝通。">As a fully independent advisor, I work for you — not for any insurance company. There's no internal team to redirect you to, no quota to meet, and no pressure to favour one carrier over another. You deal with me directly, start to finish.</p>
+      <p style="font-size:.88rem;color:var(--tx2);line-height:1.75;margin-bottom:24px;" data-en="Whether you're a new immigrant, a young family, or planning for retirement — I've helped clients at every stage of life." data-yue="無論您是新移民、年輕家庭，還是準備退休——我曾協助各個人生階段的客戶。">Whether you're a new immigrant, a young family, or planning for retirement — I've helped clients at every stage of life.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:7px;">
+        <span style="background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.2);color:var(--ga);font-size:.7rem;font-weight:600;padding:5px 13px;border-radius:999px;" data-en="🇨🇦 Canadian Licensed" data-yue="🇨🇦 加拿大持牌">🇨🇦 Canadian Licensed</span>
+
+        <span style="background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.2);color:var(--ga);font-size:.7rem;font-weight:600;padding:5px 13px;border-radius:999px;" data-en="🌐 English &amp; Cantonese" data-yue="🌐 英文及廣東話">🌐 English &amp; Cantonese</span>
+        <span style="background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.2);color:var(--ga);font-size:.7rem;font-weight:600;padding:5px 13px;border-radius:999px;" data-en="💼 Fully Independent" data-yue="💼 完全獨立">💼 Fully Independent</span>
+      </div>
+    </div>
+    <div class="abcards">
+      <div class="gbc"><div style="font-size:1.7rem;margin-bottom:9px;">🔍</div><div style="font-weight:700;color:var(--tx);font-size:.88rem;margin-bottom:5px;" data-en="No Carrier Bias" data-yue="無公司偏見">No Carrier Bias</div><div style="font-size:.76rem;color:var(--tx2);line-height:1.6;" data-en="No redirects. No quotas. Just honest, unbiased advice — straight from me to you." data-yue="無轉介，無配額，只有誠實公正的建議——直接由我給您。">No redirects. No quotas. Just honest, unbiased advice — straight from me to you.</div></div>
+      <div class="gbc"><div style="font-size:1.7rem;margin-bottom:9px;">📞</div><div style="font-weight:700;color:var(--tx);font-size:.88rem;margin-bottom:5px;" data-en="Direct Access" data-yue="直接聯絡">Direct Access</div><div style="font-size:.76rem;color:var(--tx2);line-height:1.6;" data-en="Call, text, WeChat, or WhatsApp me directly." data-yue="直接致電、短訊、微信或WhatsApp聯絡我。">Call, text, WeChat, or WhatsApp me directly.</div></div>
+
+      <div class="gbc"><div style="font-size:1.7rem;margin-bottom:9px;">🆓</div><div style="font-weight:700;color:var(--tx);font-size:.88rem;margin-bottom:5px;" data-en="Free to You" data-yue="免費服務">Free to You</div><div style="font-size:.76rem;color:var(--tx2);line-height:1.6;" data-en="My advice costs you nothing — paid by the carrier." data-yue="我的建議完全免費——由保險公司支付佣金。">My advice costs you nothing — paid by the carrier.</div></div>
+      <div class="gbc"><div style="font-size:1.7rem;margin-bottom:9px;">📋</div><div style="font-weight:700;color:var(--tx);font-size:.88rem;margin-bottom:5px;" data-en="Existing Policy Review" data-yue="現有保單檢視">Existing Policy Review</div><div style="font-size:.76rem;color:var(--tx2);line-height:1.6;" data-en="Have a policy? I'll review it and can become your agent of record — at no cost." data-yue="已有保單？我可免費為您審查並成為您的服務代理人。">Have a policy? I'll review it and can become your agent of record — at no cost.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="ctsec">
+  <div class="gblob gblue" style="width:600px;height:600px;top:-100px;left:-150px;opacity:.5;"></div>
+  <div class="gblob gpurp" style="width:500px;height:500px;bottom:-100px;right:-100px;opacity:.4;"></div>
+  <div class="si">
+    <div style="text-align:center;">
+      <div class="stag" data-en="Get In Touch" data-yue="聯絡我">Get In Touch</div>
+      <h2>Ready to Get <span class="tg" data-en="Started?" data-yue="開始？">Started?</span></h2>
+
+    </div>
+    <div class="ctgrid">
+      <!-- Left -->
+      <div>
+        <!-- QR cards -->
+        <div class="qr-row">
+          <!-- WhatsApp QR -->
+          <div class="qr-card">
+            <div class="qr-img-wrap">
+              <img src="qr/whatsapp.jpg" alt="WhatsApp QR Code"/>
+            </div>
+            <div class="qname" data-en="WhatsApp" data-yue="WhatsApp">WhatsApp</div>
+            <div class="qsub" data-en="Scan to message me directly" data-yue="掃描直接傳訊給我">Scan to message me directly</div>
+
+          </div>
+          <!-- WeChat QR -->
+          <div class="qr-card">
+            <div class="qr-img-wrap">
+              <img src="qr/wechat.png" alt="WeChat QR Code"/>
+            </div>
+            <div class="qname" data-en="WeChat / 微信" data-yue="微信">WeChat / 微信</div>
+            <div class="qsub" data-en="Scan in WeChat to add me" data-yue="在微信中掃描添加我">Scan in WeChat to add me</div>
+
+          </div>
+        </div>
+
+        <!-- Other contact methods -->
+        <div class="cmethods">
+          <a href="mailto:hello@insurewitheddie.ca" class="crow">
+            <div class="cicon" style="background:rgba(79,142,247,.12);">📧</div>
+            <div><div class="ctit" data-en="Email Me" data-yue="電郵我">Email Me</div><div class="csub">hello@insurewitheddie.ca</div></div>
+            <div class="carr">→</div>
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- Right: form -->
+      <div class="fcard">
+        <h3 data-en="Send Me a Message" data-yue="傳送訊息給我">Send Me a Message</h3>
+        <p class="fsub" data-en="I'll get back to you within one business day." data-yue="我將於一個工作天內回覆您。">I'll get back to you within one business day.</p>
+        <form id="cform" action="https://api.web3forms.com/submit" method="POST" onsubmit="doSubmit(event)">
+          <input type="hidden" name="access_key" value="f4bb4d40-2979-4f91-a4ba-e0d21cd6ca7b"/>
+          <input type="hidden" name="subject" value="New enquiry — insurewitheddie.ca"/>
+          <input type="hidden" name="from_name" value="insurewitheddie.ca"/>
+          <input type="hidden" name="redirect" value="false"/>
+          <input type="checkbox" name="botcheck" style="display:none;"/>
+          <div class="frow">
+            <div><label data-en="First Name *" data-yue="名字 *">First Name *</label><input type="text" name="first_name" placeholder="John" required/></div>
+            <div><label data-en="Last Name *" data-yue="姓氏 *">Last Name *</label><input type="text" name="last_name" placeholder="Smith" required/></div>
+          </div>
+          <div class="fg"><label data-en="Email *" data-yue="電郵 *">Email *</label><input type="email" name="email" placeholder="john@example.com" required/></div>
+          <div class="fg"><label data-en="Phone / WhatsApp" data-yue="電話 / WhatsApp">Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+1 (647) 000-0000"/></div>
+          <div class="fg">
+            <label data-en="I'm Interested In… *" data-yue="我有興趣了解… *">I'm Interested In… *</label>
+            <select name="product_interest" required>
+              <option value="" data-en="Select a product…" data-yue="選擇產品…">Select a product…</option>
+              <option data-en="Life Insurance (Term / Whole / UL)" data-yue="人壽保險（定期／終身／萬用）">Life Insurance (Term / Whole / UL)</option>
+              <option data-en="Critical Illness Insurance" data-yue="危疾保險">Critical Illness Insurance</option>
+              <option data-en="Disability Insurance" data-yue="傷殘保險">Disability Insurance</option>
+              <option data-en="Travel Insurance" data-yue="旅遊保險">Travel Insurance</option>
+              <option data-en="RRSP / TFSA Investments" data-yue="RRSP / TFSA 投資">RRSP / TFSA Investments</option>
+              <option data-en="RESP (Education Savings)" data-yue="RESP 教育儲蓄">RESP (Education Savings)</option>
+              <option data-en="Not sure — need general advice" data-yue="不確定——需要一般建議">Not sure — need general advice</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label data-en="Preferred Contact" data-yue="首選聯絡方式">Preferred Contact</label>
+            <div class="rrow">
+              <label class="ropt"><input type="radio" name="preferred_contact" value="Email"/> <span data-en="Email" data-yue="電郵">Email</span></label>
+              <label class="ropt"><input type="radio" name="preferred_contact" value="WhatsApp"/> WhatsApp</label>
+              <label class="ropt"><input type="radio" name="preferred_contact" value="WeChat"/> <span data-en="WeChat" data-yue="微信">WeChat</span></label>
+              <label class="ropt"><input type="radio" name="preferred_contact" value="Phone"/> <span data-en="Phone" data-yue="電話">Phone</span></label>
+            </div>
+          </div>
+          <div class="fg"><label data-en="Message" data-yue="訊息">Message</label><textarea name="message" rows="3" placeholder="Tell me about your situation…" data-en-ph="Tell me about your situation…" data-yue-ph="請告訴我您的情況……"></textarea></div>
+          <button type="submit" class="fsub2" data-en="Send Message →" data-yue="發送訊息 →">Send Message →</button>
+          <p class="fnote" data-en="🔒 Your information is private and never shared." data-yue="🔒 您的資料保密，絕不會分享給第三方。">🔒 Your information is private and never shared.</p>
+        </form>
+        <div class="succ" id="succ">
+          <div class="si2">🎉</div>
+          <h4 data-en="Message Sent!" data-yue="訊息已發送！">Message Sent!</h4>
+          <p data-en="Thanks — I'll be in touch within one business day." data-yue="謝謝——我將於一個工作天內聯絡您。">Thanks — I'll be in touch within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="fi" style="text-align:center;padding:40px 32px;">
+    <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div class="li">EL</div>
+      <span style="font-weight:800;color:#fff;font-size:1.05rem;">Eddie Li</span>
+    </div>
+    <p style="font-size:.8rem;color:rgba(255,255,255,.3);margin-bottom:6px;" data-en="© 2026 Eddie Li. All rights reserved." data-yue="© 2026 李先生版權所有。">© 2026 Eddie Li. All rights reserved.</p>
+
+  </div>
+</footer>
+
+<script>
+/* ── Theme ── */
+function toggleTheme(){
+  const h=document.documentElement,b=document.getElementById('tbtn');
+  const isDark=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme',isDark?'light':'dark');
+  b.textContent=isDark?'🌙':'☀️';
+  localStorage.setItem('theme',isDark?'light':'dark');
+}
+(function(){
+  const s=localStorage.getItem('theme')||'dark';
+  document.documentElement.setAttribute('data-theme',s);
+  document.getElementById('tbtn').textContent=s==='dark'?'☀️':'🌙';
+})();
+
+/* ── Language toggle ── */
+let currentLang='en';
+function toggleLang(){
+  currentLang=currentLang==='en'?'yue':'en';
+  const btn=document.getElementById('lbtn');
+  btn.textContent=currentLang==='en'?'廣東話':'English';
+  document.documentElement.setAttribute('data-lang',currentLang);
+
+  // Update all elements with data-en / data-yue
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const val=el.getAttribute('data-'+currentLang);
+    if(!val)return;
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){
+      const phKey='data-'+(currentLang==='yue'?'yue':'en')+'-ph';
+      const ph=el.getAttribute(phKey)||el.getAttribute('data-en-ph')||el.placeholder;
+      el.placeholder=el.getAttribute('data-yue-ph')&&currentLang==='yue'?el.getAttribute('data-yue-ph'):el.getAttribute('data-en-ph')||el.placeholder;
+    } else if(el.tagName==='OPTION'){
+      el.textContent=val;
+    } else {
+      el.innerHTML=val;
+    }
+  });
+
+  // Re-apply tg class to gradient spans lost on innerHTML set
+  document.querySelectorAll('.tg').forEach(el=>{
+    el.style.background='linear-gradient(135deg,#4F8EF7,#9B6EF8)';
+    el.style.webkitBackgroundClip='text';
+    el.style.webkitTextFillColor='transparent';
+    el.style.backgroundClip='text';
+  });
+}
+
+/* ── Carrier toggle ── */
+function toggleC(id){
+  ['sl','ia','cl','eq','bn','ml','bm','iv','tg'].forEach(k=>{
+    const e=document.getElementById(k);
+    if(!e)return;
+    k===id?e.classList.toggle('open'):e.classList.remove('open');
+  });
+}
+
+/* ── Form ── */
+async function doSubmit(e){
+  e.preventDefault();
+  const form=document.getElementById('cform');
+  const btn=form.querySelector('.fsub2');
+  btn.textContent='Sending…';
+  btn.disabled=true;
+  try {
+    const res=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      body:new FormData(form)
+    });
+    const json=await res.json();
+    if(json.success){
+      form.style.display='none';
+      document.getElementById('succ').style.display='block';
+    } else {
+      btn.textContent='Something went wrong — try again';
+      btn.disabled=false;
+    }
+  } catch(err){
+    btn.textContent='Network error — try again';
+    btn.disabled=false;
+  }
+}
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+  });
+});
+</script>
+</body>
+</html>
