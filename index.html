@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" data-lang="en">
+<html lang="en" data-theme="light" data-lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -39,7 +39,7 @@
              radial-gradient(ellipse 60% 60% at 80% 80%,rgba(155,110,248,.12) 0%,transparent 60%),
              #f2f2f7;
 }
-[data-theme="light"] .blob{opacity:.4;}
+[data-theme="light"] .blob{opacity:.18;}
 [data-theme="light"] .sh{background:linear-gradient(180deg,#1c1c1e 0%,rgba(28,28,30,.7) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 [data-theme="light"] .hero h1{background:linear-gradient(180deg,#1c1c1e 0%,rgba(28,28,30,.65) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 [data-theme="light"] .stat-strip{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.08);}
@@ -147,9 +147,9 @@ body{
 }
 /* mesh blobs */
 .blob{position:absolute;border-radius:50%;filter:blur(80px);animation:drift 12s ease-in-out infinite alternate;}
-.b1{width:700px;height:700px;background:rgba(79,142,247,.22);top:-200px;left:-200px;animation-delay:0s;}
-.b2{width:500px;height:500px;background:rgba(155,110,248,.22);bottom:-100px;right:-100px;animation-delay:-4s;}
-.b3{width:400px;height:400px;background:rgba(247,79,159,.12);top:30%;right:10%;animation-delay:-8s;}
+.b1{width:700px;height:700px;background:rgba(79,142,247,.22);bottom:-250px;left:-200px;animation-delay:0s;}
+.b2{width:500px;height:500px;background:rgba(155,110,248,.22);bottom:-150px;right:-150px;animation-delay:-4s;}
+.b3{width:400px;height:400px;background:rgba(247,79,159,.12);bottom:5%;right:5%;animation-delay:-8s;}
 @keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(40px,30px) scale(1.08);}}
 
 /* ─── NAV ─── */
@@ -525,8 +525,8 @@ footer p{font-size:.75rem;color:var(--tx3);}
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" style="position:relative;">
-  <div class="lg-bubble" style="top:15%;right:8%;opacity:.6;"></div>
-  <div class="lg-bubble" style="width:180px;height:180px;bottom:20%;left:5%;opacity:.35;animation-delay:-3s;"></div>
+  <div class="lg-bubble" style="bottom:8%;right:6%;opacity:.4;"></div>
+  <div class="lg-bubble" style="width:180px;height:180px;bottom:5%;left:5%;opacity:.25;animation-delay:-3s;"></div>
 
   <h1 data-en="Protect Your Family.<br/><em>Grow Your Wealth.</em>" data-yue="保障您的家人。<br/><em>增長您的財富。</em>">Protect Your Family.<br/><em>Grow Your Wealth.</em></h1>
   <p data-en="Hi, I'm Eddie Li — an independent life insurance and investment advisor contracted with Canada's top carriers. Unbiased advice, zero pressure, real results. I also help clients review and service their existing policies — and can take over as your agent of record at no cost." data-yue="你好，我係李先生 — 一位獨立人壽保險及投資顧問，與加拿大頂級保險公司合作。提供公正建議，無任何壓力，帶來真實成果。我亦協助客戶檢視及管理現有保單——並可免費成為您的服務代理人。">Hi, I'm Eddie Li — an independent life insurance and investment advisor contracted with Canada's top carriers. Unbiased advice, zero pressure, real results. I also help clients review and service their existing policies — and can take over as your agent of record at no cost.</p>
