@@ -661,12 +661,12 @@ footer p{font-size:.75rem;color:var(--tx3);}
       <h3 style="font-weight:700;margin-bottom:20px;font-size:1.05rem;" data-en="Scan to Connect" data-yue="掃描聯絡我">Scan to Connect</h3>
       <div class="qr-pair">
         <div class="qr-item">
-          <img src="qr/wechat.png" alt="WeChat QR"/>
-          <div class="qr-label">WeChat / 微信</div>
-        </div>
-        <div class="qr-item">
           <img src="qr/whatsapp.jpg" alt="WhatsApp QR"/>
           <div class="qr-label">WhatsApp</div>
+        </div>
+        <div class="qr-item">
+          <img src="qr/wechat.png" alt="WeChat QR"/>
+          <div class="qr-label">WeChat / 微信</div>
         </div>
 
       </div>
@@ -700,7 +700,7 @@ footer p{font-size:.75rem;color:var(--tx3);}
         <div class="fg"><label data-en="Phone / WhatsApp" data-yue="電話 / WhatsApp">Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+1 (647) 000-0000"/></div>
         <div class="fg">
           <label data-en="I'm Interested In…" data-yue="我有興趣了解…">I'm Interested In…</label>
-          <select name="product_interest" required>
+          <select name="product_interest">
             <option value="" data-en="Select a product…" data-yue="選擇產品…">Select a product…</option>
             <option data-en="Life Insurance (Term / Whole / UL)" data-yue="人壽保險（定期／終身／萬用）">Life Insurance (Term / Whole / UL)</option>
             <option data-en="Critical Illness Insurance" data-yue="危疾保險">Critical Illness Insurance</option>
@@ -713,7 +713,7 @@ footer p{font-size:.75rem;color:var(--tx3);}
         </div>
         <div class="fg"><label data-en="Message" data-yue="訊息">Message</label><textarea name="message" rows="3" placeholder="Tell me about your situation…" data-en-ph="Tell me about your situation…" data-yue-ph="請告訴我您的情況……"></textarea></div>
         <button type="submit" id="submitBtn" class="submit-btn" data-en="Send Message →" data-yue="發送訊息 →">Send Message →</button>
-        <p id="formNote" style="font-size:.72rem;color:var(--tx2);margin-top:10px;text-align:center;display:none;"></p>
+        <p id="formNote" style="font-size:.82rem;margin-top:12px;text-align:center;padding:12px;border-radius:10px;display:none;"></p>
       </form>
     </div>
   </div>
@@ -730,28 +730,40 @@ async function handleSubmit(e){
   e.preventDefault();
   const btn=document.getElementById('submitBtn');
   const note=document.getElementById('formNote');
+  const form=e.target;
+  // basic validation
+  const first=form.first_name.value.trim();
+  const email=form.email.value.trim();
+  if(!first||!email){
+    showNote(note,'⚠️ Please fill in your name and email.','rgba(255,59,48,.15)','rgba(255,59,48,.6)');
+    return;
+  }
   btn.textContent='Sending…';btn.disabled=true;
-  const data=new FormData(e.target);
+  const data=new FormData(form);
   try{
     const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:data});
     const json=await res.json();
     if(json.success){
-      e.target.reset();
-      btn.textContent='✓ Message Sent!';
+      form.reset();
+      btn.textContent='✓ Sent!';
       btn.style.background='linear-gradient(135deg,#34C759,#30D158)';
-      note.textContent='Thanks — I\'ll be in touch within one business day.';
-      note.style.display='block';
-      setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';btn.disabled=false;note.style.display='none';},5000);
+      showNote(note,'🎉 Message sent! I\'ll be in touch within one business day.','rgba(52,199,89,.15)','rgba(52,199,89,.5)');
+      setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';btn.disabled=false;},5000);
     } else {
       btn.textContent='Send Message →';btn.disabled=false;
-      note.textContent='Something went wrong — please email hello@insurewitheddie.ca directly.';
-      note.style.display='block';
+      showNote(note,'Something went wrong — email hello@insurewitheddie.ca directly.','rgba(255,59,48,.15)','rgba(255,59,48,.6)');
     }
   } catch(err){
     btn.textContent='Send Message →';btn.disabled=false;
-    note.textContent='Network error — please email hello@insurewitheddie.ca directly.';
-    note.style.display='block';
+    showNote(note,'Network error — email hello@insurewitheddie.ca directly.','rgba(255,59,48,.15)','rgba(255,59,48,.6)');
   }
+}
+function showNote(el,msg,bg,border){
+  el.textContent=msg;
+  el.style.background=bg;
+  el.style.border='1px solid '+border;
+  el.style.color='#fff';
+  el.style.display='block';
 }
 function toggleTheme(){
   const h=document.documentElement;
