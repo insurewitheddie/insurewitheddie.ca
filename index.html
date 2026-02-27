@@ -518,7 +518,7 @@ footer p{font-size:.75rem;color:var(--tx3);}
     </svg>
   </a>
   <div class="nav-toggles">
-    <button class="ntbtn lang-btn" id="langBtn" onclick="toggleLang()">廣東話</button>
+    <button class="ntbtn lang-btn" id="langBtn" onclick="toggleLang()">中文</button>
     <a href="#contact" class="nav-cta" data-en="Book Free Call →" data-yue="免費預約 →">Book Free Call →</a>
   </div>
 </nav>
@@ -776,7 +776,7 @@ function toggleLang(){
   const isEn=h.getAttribute('data-lang')==='en';
   const newLang=isEn?'yue':'en';
   h.setAttribute('data-lang',newLang);
-  document.getElementById('langBtn').textContent=isEn?'English':'廣東話';
+  document.getElementById('langBtn').textContent=isEn?'English':'中文';
   // Tags that should use innerHTML (may contain <em> etc.)
   const htmlTags=['H1','H2','H3','H4'];
   document.querySelectorAll('[data-en]').forEach(el=>{
