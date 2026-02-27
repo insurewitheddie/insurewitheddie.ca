@@ -668,6 +668,7 @@ footer p{font-size:.75rem;color:var(--tx3);}
           <img src="qr/whatsapp.jpg" alt="WhatsApp QR"/>
           <div class="qr-label">WhatsApp</div>
         </div>
+
       </div>
       <a href="mailto:hello@insurewitheddie.ca" class="email-cta">
         <div class="email-cta-icon">
@@ -686,16 +687,20 @@ footer p{font-size:.75rem;color:var(--tx3);}
     <!-- Right: Form -->
     <div class="ct-panel">
       <h3 style="font-weight:700;margin-bottom:20px;font-size:1.05rem;" data-en="Send a Message" data-yue="傳送訊息">Send a Message</h3>
-      <form>
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="access_key" value="f4bb4d40-2979-4f91-a4ba-e0d21cd6ca7b"/>
+        <input type="hidden" name="subject" value="New enquiry — insurewitheddie.ca"/>
+        <input type="hidden" name="from_name" value="insurewitheddie.ca"/>
+        <input type="checkbox" name="botcheck" style="display:none;"/>
         <div class="form-row">
-          <div class="fg"><label data-en="First Name *" data-yue="名字 *">First Name *</label><input type="text" name="first_name" placeholder="John" data-en-ph="John" data-yue-ph="John" required/></div>
-          <div class="fg"><label data-en="Last Name *" data-yue="姓氏 *">Last Name *</label><input type="text" name="last_name" placeholder="Smith" data-en-ph="Smith" data-yue-ph="Smith" required/></div>
+          <div class="fg"><label data-en="First Name *" data-yue="名字 *">First Name *</label><input type="text" name="first_name" placeholder="John" required/></div>
+          <div class="fg"><label data-en="Last Name *" data-yue="姓氏 *">Last Name *</label><input type="text" name="last_name" placeholder="Smith" required/></div>
         </div>
         <div class="fg"><label data-en="Email *" data-yue="電郵 *">Email *</label><input type="email" name="email" placeholder="john@example.com" required/></div>
         <div class="fg"><label data-en="Phone / WhatsApp" data-yue="電話 / WhatsApp">Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+1 (647) 000-0000"/></div>
         <div class="fg">
           <label data-en="I'm Interested In…" data-yue="我有興趣了解…">I'm Interested In…</label>
-          <select name="product_interest">
+          <select name="product_interest" required>
             <option value="" data-en="Select a product…" data-yue="選擇產品…">Select a product…</option>
             <option data-en="Life Insurance (Term / Whole / UL)" data-yue="人壽保險（定期／終身／萬用）">Life Insurance (Term / Whole / UL)</option>
             <option data-en="Critical Illness Insurance" data-yue="危疾保險">Critical Illness Insurance</option>
@@ -707,7 +712,8 @@ footer p{font-size:.75rem;color:var(--tx3);}
           </select>
         </div>
         <div class="fg"><label data-en="Message" data-yue="訊息">Message</label><textarea name="message" rows="3" placeholder="Tell me about your situation…" data-en-ph="Tell me about your situation…" data-yue-ph="請告訴我您的情況……"></textarea></div>
-        <button type="submit" class="submit-btn" data-en="Send Message →" data-yue="發送訊息 →">Send Message →</button>
+        <button type="submit" id="submitBtn" class="submit-btn" data-en="Send Message →" data-yue="發送訊息 →">Send Message →</button>
+        <p id="formNote" style="font-size:.72rem;color:var(--tx2);margin-top:10px;text-align:center;display:none;"></p>
       </form>
     </div>
   </div>
@@ -720,6 +726,33 @@ footer p{font-size:.75rem;color:var(--tx3);}
 </footer>
 
 <script>
+async function handleSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn');
+  const note=document.getElementById('formNote');
+  btn.textContent='Sending…';btn.disabled=true;
+  const data=new FormData(e.target);
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:data});
+    const json=await res.json();
+    if(json.success){
+      e.target.reset();
+      btn.textContent='✓ Message Sent!';
+      btn.style.background='linear-gradient(135deg,#34C759,#30D158)';
+      note.textContent='Thanks — I\'ll be in touch within one business day.';
+      note.style.display='block';
+      setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';btn.disabled=false;note.style.display='none';},5000);
+    } else {
+      btn.textContent='Send Message →';btn.disabled=false;
+      note.textContent='Something went wrong — please email hello@insurewitheddie.ca directly.';
+      note.style.display='block';
+    }
+  } catch(err){
+    btn.textContent='Send Message →';btn.disabled=false;
+    note.textContent='Network error — please email hello@insurewitheddie.ca directly.';
+    note.style.display='block';
+  }
+}
 function toggleTheme(){
   const h=document.documentElement;
   const isDark=h.getAttribute('data-theme')==='dark';
